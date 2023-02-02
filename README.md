@@ -1,1 +1,5 @@
-# elyadata-angular-technical-assessment
+# ELYADATA Angular Technical Assessment
+
+## Angular - FastAPI - MongoDB
+
+![](elyadata-logo.jpg)
