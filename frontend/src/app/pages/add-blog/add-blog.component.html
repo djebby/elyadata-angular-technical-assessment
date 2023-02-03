@@ -1,0 +1,15 @@
+<form [formGroup]="addBlogForm" (ngSubmit)="onSubmitForm()">
+  <div class="mb-3">
+    <label for="title" class="form-label">Blog Title</label>
+    <input type="text" class="form-control" id="title" placeholder="blog title..." formControlName="title">
+  </div>
+  <div class="mb-3">
+    <label for="author" class="form-label">Blog Author</label>
+    <input type="text" class="form-control" id="author" placeholder="blog author..." formControlName="author">
+  </div>
+  <div class="mb-3">
+    <label for="content" class="form-label">Blog Content</label>
+    <textarea class="form-control" id="content" rows="10" formControlName="content"></textarea>
+  </div>
+  <button class="btn btn-primary" type="submit">Publish</button>
+</form>

@@ -1,0 +1,40 @@
+<div
+  *ngIf="blog != null"
+  [ngClass]="{
+    'border-success': blog.upvote > blog.downvote,
+    'border-danger': blog.upvote <= blog.downvote
+  }"
+  class="card my-3"
+>
+  <div class="card-body">
+    <h5 class="card-title">{{ blog.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <i class="bi bi-person"></i> {{ blog.author }}
+      <i class="bi bi-calendar"></i> {{ blog.date.toISOString().split('.')[0] }}
+    </h6>
+    <p class="card-text">
+      {{ blog.content }}
+    </p>
+    <h4 class="card-subtitle mb-2 text-muted">
+      {{ blog.upvote }}
+      <i
+        (click)="thumbsUpHandler()"
+        [ngClass]="{
+          'bi bi-hand-thumbs-up-fill': blog.userVote,
+          'bi bi-hand-thumbs-up': !blog.userVote
+        }"
+        style="cursor: pointer"
+      ></i>
+      <span class="mx-2"></span>
+      {{ blog.downvote }}
+      <i
+        (click)="thumbsDownHandler()"
+        [ngClass]="{
+          'bi bi-hand-thumbs-down-fill': blog.userVote == false,
+          'bi bi-hand-thumbs-down': blog.userVote == true || blog.userVote == null
+        }"
+        style="cursor: pointer"
+      ></i>
+    </h4>
+  </div>
+</div>
