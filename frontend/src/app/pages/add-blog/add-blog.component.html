@@ -1,15 +1,68 @@
 <form [formGroup]="addBlogForm" (ngSubmit)="onSubmitForm()">
   <div class="mb-3">
     <label for="title" class="form-label">Blog Title</label>
-    <input type="text" class="form-control" id="title" placeholder="blog title..." formControlName="title">
+    <input
+      type="text"
+      [ngClass]="{
+        'is-valid':
+          addBlogForm.get('title')?.valid && addBlogForm.get('title')?.touched,
+        'is-invalid':
+          !addBlogForm.get('title')?.valid && addBlogForm.get('title')?.touched
+      }"
+      class="form-control"
+      id="title"
+      placeholder="blog title..."
+      formControlName="title"
+    />
   </div>
   <div class="mb-3">
     <label for="author" class="form-label">Blog Author</label>
-    <input type="text" class="form-control" id="author" placeholder="blog author..." formControlName="author">
+    <input
+      type="text"
+      [ngClass]="{
+        'is-valid':
+          addBlogForm.get('author')?.valid &&
+          addBlogForm.get('author')?.touched,
+        'is-invalid':
+          !addBlogForm.get('author')?.valid &&
+          addBlogForm.get('author')?.touched
+      }"
+      class="form-control"
+      id="author"
+      placeholder="blog author..."
+      formControlName="author"
+    />
   </div>
   <div class="mb-3">
     <label for="content" class="form-label">Blog Content</label>
-    <textarea class="form-control" id="content" rows="10" formControlName="content"></textarea>
+    <textarea
+      [ngClass]="{
+        'is-valid':
+          addBlogForm.get('content')?.valid &&
+          addBlogForm.get('content')?.touched,
+        'is-invalid':
+          !addBlogForm.get('content')?.valid &&
+          addBlogForm.get('content')?.touched
+      }"
+      class="form-control"
+      id="content"
+      rows="10"
+      formControlName="content"
+    ></textarea>
   </div>
-  <button class="btn btn-primary" type="submit">Publish</button>
+  <div
+    *ngIf="
+      !addBlogForm.valid &&
+      addBlogForm.get('title')?.touched &&
+      addBlogForm.get('author')?.touched &&
+      addBlogForm.get('content')?.touched
+    "
+    class="alert alert-danger"
+    role="alert"
+  >
+    Please enter a valid blog data...
+  </div>
+  <button class="btn btn-primary" type="submit" [disabled]="!addBlogForm.valid">
+    Publish
+  </button>
 </form>

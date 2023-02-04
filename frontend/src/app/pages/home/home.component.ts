@@ -10,8 +10,6 @@ export class HomeComponent {
   blogs: any[] = [];
   constructor(private blogsService: BlogsService) {
     this.blogs = blogsService.fetchBlogs();
-    for(const blog of this.blogs) console.log(blog.id);
-
   }
 
   searchHandler(text: string) {
@@ -29,4 +27,3 @@ export class HomeComponent {
     if (clear) this.blogs = this.blogsService.fetchBlogs();
   }
 }
-

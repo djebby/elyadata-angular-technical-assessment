@@ -14,7 +14,7 @@
     </h6>
     <p class="card-text">
       {{ blog.content.slice(0, 500) }}...
-      <a href="#" class="card-link">
+      <a class="card-link" [routerLink]="['blog-details', blog.id]">
         <span class="badge text-bg-primary">Continue reading</span>
       </a>
     </p>
@@ -23,8 +23,8 @@
       <i
         (click)="thumbsUpHandler()"
         [ngClass]="{
-          'bi bi-hand-thumbs-up-fill': blog.userVote,
-          'bi bi-hand-thumbs-up': !blog.userVote
+          'bi bi-hand-thumbs-up-fill': blog.userVote == 1,
+          'bi bi-hand-thumbs-up': blog.userVote < 1
         }"
         style="cursor: pointer"
       ></i>
@@ -33,8 +33,8 @@
       <i
         (click)="thumbsDownHandler()"
         [ngClass]="{
-          'bi bi-hand-thumbs-down-fill': blog.userVote == false,
-          'bi bi-hand-thumbs-down': blog.userVote == true || blog.userVote == null
+          'bi bi-hand-thumbs-down-fill': blog.userVote == -1,
+          'bi bi-hand-thumbs-down': blog.userVote > -1
         }"
         style="cursor: pointer"
       ></i>
