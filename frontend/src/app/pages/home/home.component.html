@@ -4,21 +4,28 @@
     type="text"
     class="form-control"
     placeholder="Search by title, author or content..."
-    #text
-    (input)="searchInputClearHandler(text.value.trim().length == 0)"
+    #inputText
+    (input)="searchInputClearHandler(inputText.value.trim().length == 0)"
   />
   <button
     class="btn btn-outline-info"
     type="button"
     id="button-addon2"
-    (click)="searchHandler(text.value.trim())"
+    (click)="searchHandler(inputText.value.trim())"
   >
     <i class="bi bi-search"></i>
     Search
   </button>
 </div>
 
-<div *ngIf="blogs.length > 0">
+<div *ngIf="blogs && blogs.length > 0">
   <app-blog-preview *ngFor="let blog of blogs" [blog]="blog"></app-blog-preview>
+</div>
+
+<div *ngIf="!blogs || blogs.length == 0">
+  
+  <div class="alert alert-warning" role="alert">
+    No Content...
+  </div>
 </div>
 

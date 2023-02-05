@@ -14,7 +14,9 @@ export class BlogDetailsComponent {
   constructor(private blogsService: BlogsService, private route: ActivatedRoute) {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.blog = this.blogsService.fetchBlogById(this.id);
+      this.blogsService.fetchBlogById(this.id).subscribe(blog => {
+        this.blog = blog;
+      })
     })
 
   }
@@ -33,7 +35,7 @@ export class BlogDetailsComponent {
       this.blog.upvote--;
       this.blog.userVote = 0;
     }
-    
+    this.blogsService.editBlog(this.blog);
   }
   
   thumbsDownHandler() {
@@ -50,6 +52,7 @@ export class BlogDetailsComponent {
       this.blog.downvote--;
       this.blog.userVote = 0;
     }
+    this.blogsService.editBlog(this.blog);
   }
  
 }

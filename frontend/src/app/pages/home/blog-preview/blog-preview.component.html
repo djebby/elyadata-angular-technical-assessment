@@ -1,5 +1,4 @@
 <div
-
   [ngClass]="{
     'border-success': blog.upvote > blog.downvote,
     'border-danger': blog.upvote <= blog.downvote
@@ -10,11 +9,11 @@
     <h5 class="card-title">{{ blog.title }}</h5>
     <h6 class="card-subtitle mb-2 text-muted">
       <i class="bi bi-person"></i> {{ blog.author }}
-      <i class="bi bi-calendar"></i> {{ blog.date.toISOString().split("T")[0] }}
+      <i class="bi bi-calendar"></i> {{ blog.date.split("T")[0] }}
     </h6>
     <p class="card-text">
       {{ blog.content.slice(0, 500) }}...
-      <a class="card-link" [routerLink]="['blog-details', blog.id]">
+      <a class="card-link" [routerLink]="['blog-details', blog._id]">
         <span class="badge text-bg-primary">Continue reading</span>
       </a>
     </p>

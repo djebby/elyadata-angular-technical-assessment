@@ -24,9 +24,12 @@ export class AddBlogComponent implements OnInit {
 
   onSubmitForm() {
     const { title, author, content } = this.addBlogForm.value;
-    this.blogsService.addBlog(title, author, content);
-    this.addBlogForm.reset();
-    this.router.navigate(['/']);
+    this.blogsService.addBlog(title, author, content).subscribe(response => {
+      this.addBlogForm.reset();
+      this.router.navigate(['/']);
+    }, error => {
+      console.log(error);
+    })
   }
 
 }

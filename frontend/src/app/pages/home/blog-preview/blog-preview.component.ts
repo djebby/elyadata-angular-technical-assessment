@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BlogsService } from 'src/app/shared/blogs.service';
 
 @Component({
   selector: 'app-blog-preview',
@@ -8,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class BlogPreviewComponent {
   
   @Input() blog: any;
+  constructor(private blogsService: BlogsService) {}
   
 
   thumbsUpHandler() {
@@ -24,7 +26,7 @@ export class BlogPreviewComponent {
       this.blog.upvote--;
       this.blog.userVote = 0;
     }
-    
+    this.blogsService.editBlog(this.blog);
   }
   
   thumbsDownHandler() {
@@ -41,6 +43,7 @@ export class BlogPreviewComponent {
       this.blog.downvote--;
       this.blog.userVote = 0;
     }
+    this.blogsService.editBlog(this.blog);
   }
 
 }

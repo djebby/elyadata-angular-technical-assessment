@@ -1,5 +1,5 @@
 <div
-  *ngIf="blog != false"
+  *ngIf="blog"
   [ngClass]="{
     'border-success': blog.upvote > blog.downvote,
     'border-danger': blog.upvote <= blog.downvote
@@ -10,7 +10,7 @@
     <h5 class="card-title">{{ blog.title }}</h5>
     <h6 class="card-subtitle mb-2 text-muted">
       <i class="bi bi-person"></i> {{ blog.author }}
-      <i class="bi bi-calendar"></i> {{ blog.date.toISOString().split('.')[0] }}
+      <i class="bi bi-calendar"></i> {{ blog.date.split('.')[0] }}
     </h6>
     <p class="card-text">
       {{ blog.content }}
@@ -39,7 +39,7 @@
   </div>
 </div>
 
-<div *ngIf="blog == false">
+<div *ngIf="!blog">
   <div class="alert alert-danger" role="alert"> no blog with this id: {{ id }} </div>
   <svg xmlns="http://www.w3.org/2000/svg" width="30%" height="30%" fill="red" class="bi bi-exclamation-circle" viewBox="0 0 16 16">
     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BlogsService } from 'src/app/shared/blogs.service';
 
 @Component({
@@ -6,24 +6,26 @@ import { BlogsService } from 'src/app/shared/blogs.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
-  blogs: any[] = [];
-  constructor(private blogsService: BlogsService) {
-    this.blogs = blogsService.fetchBlogs();
+export class HomeComponent implements OnInit{
+  blogs: any;
+  constructor(private blogsService: BlogsService) { }
+
+  ngOnInit(): void {
+    this.blogsService.fetchBlogs().subscribe(blogs => {
+      this.blogs = blogs;
+    });
   }
 
-  searchHandler(text: string) {
-    this.blogs = this.blogsService
-      .fetchBlogs()
-      .filter(
-        (blog) =>
-          blog.title.toLowerCase().includes(text.toLowerCase()) ||
-          blog.author.toLowerCase().includes(text.toLowerCase()) ||
-          blog.content.toLowerCase().includes(text.toLowerCase())
-      );
+  searchHandler(keyword: string) {
+    this.blogsService.searchBlogs(keyword)
+    .subscribe(blogs => {
+      this.blogs = blogs;
+    });
   }
 
   searchInputClearHandler(clear: boolean) {
-    if (clear) this.blogs = this.blogsService.fetchBlogs();
+    if(clear) this.blogsService.fetchBlogs().subscribe(blogs => {
+      this.blogs = blogs;
+    });
   }
 }
