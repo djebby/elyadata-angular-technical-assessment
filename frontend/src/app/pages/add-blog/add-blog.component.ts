@@ -11,6 +11,8 @@ import { BlogsService } from 'src/app/shared/blogs.service';
 })
 export class AddBlogComponent implements OnInit {
   addBlogForm!: FormGroup;
+  isLoading = false;
+  submitionError = false;
 
   constructor(private blogsService: BlogsService, private router: Router) { }
 
@@ -23,12 +25,19 @@ export class AddBlogComponent implements OnInit {
   }
 
   onSubmitForm() {
+    this.isLoading = true;
     const { title, author, content } = this.addBlogForm.value;
     this.blogsService.addBlog(title, author, content).subscribe(response => {
+      this.isLoading = true;
       this.addBlogForm.reset();
       this.router.navigate(['/']);
     }, error => {
       console.log(error);
+      this.isLoading = false;
+      this.submitionError = true;
+      setTimeout(() => {
+        this.submitionError = false;
+      }, 5000)
     })
   }
 

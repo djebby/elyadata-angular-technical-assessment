@@ -8,7 +8,7 @@ import { BlogsService } from 'src/app/shared/blogs.service';
 })
 export class HomeComponent implements OnInit{
   blogs: any;
-  constructor(private blogsService: BlogsService) { }
+  constructor(private blogsService: BlogsService) {}
 
   ngOnInit(): void {
     this.blogsService.fetchBlogs().subscribe(blogs => {

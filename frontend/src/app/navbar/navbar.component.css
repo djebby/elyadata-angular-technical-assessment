@@ -2,12 +2,18 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: black;
+    background-color: #20232a;
     display: flex;
     z-index: 10;
     width: 100%;
+    font-weight: bold;
 }
 
 nav > a {
+    color: white;
     margin: 1vh;
+}
+
+nav > a:hover {
+    color: #61dafb;
 }

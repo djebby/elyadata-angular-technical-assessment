@@ -21,9 +21,9 @@ async def search_blog(keyword: str):
   return serializeList(
     conn.elyadata.blog.find({
       '$or': [
-          {'title': {'$regex':keyword}},
-          {'author': {'$regex':keyword}},
-          {'content': {'$regex':keyword}}
+          {'title': {'$regex':keyword, '$options':'i'}},
+          {'author': {'$regex':keyword, '$options':'i'}},
+          {'content': {'$regex':keyword, '$options':'i'}}
         ]
       })
   )
