@@ -10,8 +10,7 @@
     |----------------------------|-------------------------------------|
     | /                          | the blogs list page                 |
     | /add-blog                  | form for adding blogs               |
-    | /blog-details/:id          | upload a new pictures               |
-
+    | /blog-details/:id          | blog details page 	               |
 ### Backend API Endpoints
     | ENDPOINT                   | DESCRIPTION                                    |
     |----------------------------|------------------------------------------------|
