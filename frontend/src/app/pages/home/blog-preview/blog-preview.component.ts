@@ -26,7 +26,7 @@ export class BlogPreviewComponent {
       this.blog.upvote--;
       this.blog.userVote = 0;
     }
-    this.blogsService.editBlog(this.blog);
+    this.blogsService.editBlog(this.blog); // send a put request to increment or decrement the given likes of this blog
   }
   
   thumbsDownHandler() {
@@ -43,7 +43,7 @@ export class BlogPreviewComponent {
       this.blog.downvote--;
       this.blog.userVote = 0;
     }
-    this.blogsService.editBlog(this.blog);
+    this.blogsService.editBlog(this.blog); // send a put request to increment or decrement the given dislikes of this blog
   }
 
 }

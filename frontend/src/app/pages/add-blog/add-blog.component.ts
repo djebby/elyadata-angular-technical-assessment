@@ -14,7 +14,7 @@ export class AddBlogComponent implements OnInit {
   isLoading = false;
   submitionError = false;
 
-  constructor(private blogsService: BlogsService, private router: Router) { }
+  constructor(private blogsService: BlogsService, private router: Router) {}
 
   ngOnInit(): void {
     this.addBlogForm = new FormGroup({
@@ -25,19 +25,19 @@ export class AddBlogComponent implements OnInit {
   }
 
   onSubmitForm() {
-    this.isLoading = true;
+    this.isLoading = true; // render the spinner loader
     const { title, author, content } = this.addBlogForm.value;
     this.blogsService.addBlog(title, author, content).subscribe(response => {
-      this.isLoading = true;
+      this.isLoading = false; // hide the spinner
       this.addBlogForm.reset();
       this.router.navigate(['/']);
     }, error => {
       console.log(error);
-      this.isLoading = false;
-      this.submitionError = true;
-      setTimeout(() => {
+      this.isLoading = false; // hide the spinner
+      this.submitionError = true; // show the failed submission error message
+      setTimeout(() => { // hide the failed submission error message after 5 seconds
         this.submitionError = false;
-      }, 5000)
+      }, 5000);
     })
   }
 

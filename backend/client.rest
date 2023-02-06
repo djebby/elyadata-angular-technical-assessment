@@ -1,3 +1,5 @@
+### REST Client extension for testing the api : https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
 ### fetch all blogs
 GET http://127.0.0.1:8000/get-blogs
 

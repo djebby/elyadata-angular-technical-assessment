@@ -35,7 +35,7 @@ export class BlogDetailsComponent {
       this.blog.upvote--;
       this.blog.userVote = 0;
     }
-    this.blogsService.editBlog(this.blog);
+    this.blogsService.editBlog(this.blog);  // save the new like/dislike state
   }
   
   thumbsDownHandler() {
@@ -52,7 +52,7 @@ export class BlogDetailsComponent {
       this.blog.downvote--;
       this.blog.userVote = 0;
     }
-    this.blogsService.editBlog(this.blog);
+    this.blogsService.editBlog(this.blog); // save the new dislike/like state
   }
  
 }

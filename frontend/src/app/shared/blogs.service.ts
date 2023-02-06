@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 @Injectable({providedIn: 'root'})
 export class BlogsService {
   blogs: any;
-  baseURL = 'http://127.0.0.1:8000/'; // 192.168.1.155
+  baseURL = 'http://127.0.0.1:8000/'; // backend server url 192.168.1.155
   constructor(private http: HttpClient) {}
 
   fetchBlogs() {
@@ -25,10 +25,10 @@ export class BlogsService {
       title,
       author,
       content,
-      date: new Date().toISOString(),
+      date: new Date().toISOString(), // it will be nice if we give every blog a date
       upvote: 0,
       downvote: 0,
-      userVote: 0
+      userVote: 0 // 1 if the user like this blog, -1 if he dislike it and 0 if he does not give neither like or dislike
     }
     return this.http.post(this.baseURL+'add-blog', blog);
   }

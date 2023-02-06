@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit{
     });
   }
 
-  searchInputClearHandler(clear: boolean) {
+  searchInputClearHandler(clear: boolean) { // user clear the research input so we should fetch all the blogs
     if(clear) this.blogsService.fetchBlogs().subscribe(blogs => {
       this.blogs = blogs;
     });
